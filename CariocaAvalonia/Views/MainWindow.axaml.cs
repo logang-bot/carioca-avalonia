@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace CariocaAvalonia;
+namespace CariocaAvalonia.Views;
 
 public partial class MainWindow : Window
 {
