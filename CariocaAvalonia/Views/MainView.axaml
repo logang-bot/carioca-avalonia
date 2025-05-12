@@ -1,0 +1,65 @@
+<Window 
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:vm="using:CariocaAvalonia.ViewModels"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="600"
+  Width="1024" Height="600"
+  x:Class="CariocaAvalonia.Views.MainView"
+  x:DataType="vm:MainViewModel"
+  Title="CariocaAvalonia">
+
+  <Design.DataContext>
+    <vm:MainViewModel></vm:MainViewModel>
+  </Design.DataContext>
+
+  <Grid Background="{DynamicResource PrimaryBackgroundSurface}" ColumnDefinitions="Auto, *">
+    
+    <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
+      
+      <Grid RowDefinitions="*, Auto">
+        
+        <StackPanel Spacing="12">
+
+          <Image PointerPressed="Image_PointerPressed" Source="/Assets/Images/img_dummy_logo.png" Width="220" IsVisible="{Binding SideMenuExpanded}"></Image>
+          <Image PointerPressed="Image_PointerPressed" Source="/Assets/avalonia-logo.ico" Width="22" IsVisible="{Binding !SideMenuExpanded}"></Image>
+          
+          <Button HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+              <Label Classes="icon" Content="&#xE2F6;"></Label>
+              <Label Content="Sumario de ordenes" IsVisible="{Binding SideMenuExpanded}"></Label>
+            </StackPanel>
+          </Button>
+          
+          <Button HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+              <Label Classes="icon" Content="&#xE262;"></Label>
+              <Label Content="Ordenes locales" IsVisible="{Binding SideMenuExpanded}"></Label>
+            </StackPanel>
+          </Button>
+          
+          <Button HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+              <Label Classes="icon" Content="&#xE80A;"></Label>
+              <Label Content="Ordenes de entrega" IsVisible="{Binding SideMenuExpanded}"></Label>
+            </StackPanel>
+          </Button>
+          
+          <Button HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+              <Label Classes="icon" Content="&#xE1A0;"></Label>
+              <Label Content="Historial" IsVisible="{Binding SideMenuExpanded}"></Label>
+            </StackPanel>
+          </Button>
+          
+        </StackPanel>
+
+        <Button Classes="transparent" Grid.Row="1">
+            <Label Classes="icon-only" Content="&#xE270;"></Label>
+        </Button>
+      </Grid>
+    </Border>
+  </Grid>
+
+</Window>
