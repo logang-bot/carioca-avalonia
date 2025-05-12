@@ -5,11 +5,32 @@
              RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
     
-    <Application.DataTemplates>
+    <!--<Application.DataTemplates>
       <local:ViewLocator/>
-    </Application.DataTemplates>
+    </Application.DataTemplates>-->
   
     <Application.Styles>
         <FluentTheme />
+      <StyleInclude Source="Styles/AppDefaultStyles.axaml"></StyleInclude>
     </Application.Styles>
+
+  <Application.Resources>
+    <SolidColorBrush x:Key="PrimaryForeground">#343a40</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryBackground">#ffec99</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryBackgroundSurface">#e9ecef</SolidColorBrush>
+    <LinearGradientBrush x:Key="PrimaryBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+      <GradientStop Offset="0" Color="#ffec99"></GradientStop>
+      <GradientStop Offset="1" Color="#fff3bf"></GradientStop>
+    </LinearGradientBrush>
+
+
+    <SolidColorBrush x:Key="PrimaryHoverBackground">#fab005</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryHoverForeground">White</SolidColorBrush>
+
+    <FontFamily x:Key="Montserrat">/Assets/Fonts/Montserrat-Regular.ttf#Montserrat</FontFamily>
+    <FontFamily x:Key="MontserratBold">/Assets/Fonts/Montserrat-Bold.ttf#Montserrat</FontFamily>
+    <FontFamily x:Key="Phosphor">/Assets/Fonts/Phosphor.ttf#Phosphor</FontFamily>
+    <FontFamily x:Key="PhosphorFill">/Assets/Fonts/Phosphor-Fill.ttf#Phosphor-Fill</FontFamily>
+
+  </Application.Resources>
 </Application>
