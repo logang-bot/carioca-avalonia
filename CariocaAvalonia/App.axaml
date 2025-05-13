@@ -5,9 +5,9 @@
              RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
     
-    <!--<Application.DataTemplates>
+    <Application.DataTemplates>
       <local:ViewLocator/>
-    </Application.DataTemplates>-->
+    </Application.DataTemplates>
   
     <Application.Styles>
         <FluentTheme />
@@ -25,6 +25,7 @@
 
 
     <SolidColorBrush x:Key="PrimaryHoverBackground">#fab005</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryActiveBackground">#e67700</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryHoverForeground">White</SolidColorBrush>
 
     <FontFamily x:Key="Montserrat">/Assets/Fonts/Montserrat-Regular.ttf#Montserrat</FontFamily>

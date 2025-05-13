@@ -1,0 +1,84 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CariocaAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:CreateOrderViewModel"
+             x:Class="CariocaAvalonia.Views.CreateOrderView">
+
+  <Design.DataContext>
+    <vm:CreateOrderViewModel></vm:CreateOrderViewModel>
+  </Design.DataContext>
+
+  <Grid Background="{DynamicResource PrimaryBackgroundSurface}" RowDefinitions="*, Auto">
+
+    <Grid ColumnDefinitions="2*, *">
+      <StackPanel Margin="16" Orientation="Vertical" Spacing="12">
+        <StackPanel>
+          <Label>Nombre del cliente</Label>
+          <TextBox Grid.Column="0" Watermark="Nombre y Apellido"></TextBox>
+        </StackPanel>
+
+        <StackPanel>
+          <Label>Numero de Carnet (Opcional)</Label>
+          <TextBox Grid.Column="0"></TextBox>
+        </StackPanel>
+        
+        <StackPanel>
+          <Label>Detalle de Orden</Label>
+          
+          <TextBlock Text="No se agregaron productos"
+                     IsVisible="{Binding IsAddedProductsEmpty}"
+                     HorizontalAlignment="Center" Margin="30"/>
+
+          <ListBox ItemsSource="{Binding AddedProducts}"
+                   IsVisible="{Binding !IsAddedProductsEmpty}"
+                   Margin="20">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding Name}" />
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          
+          <Grid ColumnDefinitions="*, Auto" Margin="20">
+            <TextBlock Text="Total" Grid.Column="0" FontSize="24"/>
+            <TextBlock 
+              Text="{Binding TotalAmountFormatted}" 
+              Grid.Column="1" 
+              HorizontalAlignment="Right"
+              FontSize="24" />
+          </Grid>
+        </StackPanel>
+      </StackPanel>
+      <Grid Grid.Column="1" RowDefinitions="Auto, *">
+        <TextBlock Grid.Row="0" FontSize="32" Margin="8" FontWeight="ExtraBold">Productos</TextBlock>
+        <ListBox 
+          Grid.Row="1" 
+          ItemsSource="{Binding Products}" 
+          ScrollViewer.VerticalScrollBarVisibility="Auto">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Border 
+                PointerPressed="StackPanel_PointerPressed"
+                Background="Transparent"
+                HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical">
+                  <TextBlock Text="{Binding Name}" TextWrapping="Wrap" FontSize="22" FontStyle="Italic"/>
+                  <TextBlock Text="{Binding FormattedCost}" TextWrapping="Wrap" FontSize="16" FontStyle="Oblique" FontWeight="Heavy"/>
+                  <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                </StackPanel>
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </Grid>
+        
+    </Grid>
+    
+    <Button Grid.Row="1" HorizontalAlignment="Stretch" Margin="0, 8, 0, 0">
+      <Label Content="Crear Orden" HorizontalAlignment="Center"></Label>
+    </Button>
+  </Grid>
+</UserControl>
