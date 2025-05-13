@@ -13,6 +13,8 @@ namespace CariocaAvalonia.Models
 
         public string ClientName { get; }
 
+        public string ClientCi { get; }
+
         public double TotalPrice { get; }
 
         public List<Product> Products { get; }

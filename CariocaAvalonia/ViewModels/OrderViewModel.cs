@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace CariocaAvalonia.ViewModels;
 
-public partial class LocalOrdersViewModel : ViewModelBase
+public partial class OrderViewModel : ViewModelBase
 {
-    public string Test { get; set; } = "En desarrollo...";
-}
 
+}

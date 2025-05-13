@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CariocaAvalonia.Enums
+namespace CariocaAvalonia.Enums;
+
+public enum Fittings
 {
-    enum Fittings
-    {
-        Rice,
-        Mote,
-        FrenchFries,
-        Ketchup,
-        Mayonnaise,
-        Mustard,
-        BarbecueSauce,
-        Llajua
-    }
+    Rice,
+    Mote,
+    FrenchFries,
+    Ketchup,
+    Mayonnaise,
+    Mustard,
+    BarbecueSauce,
+    Llajua
 }

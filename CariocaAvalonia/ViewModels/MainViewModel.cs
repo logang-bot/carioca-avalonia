@@ -29,17 +29,20 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(OrdersSummaryIsActive))]
     [NotifyPropertyChangedFor(nameof(LocalOrdersIsActive))]
+    [NotifyPropertyChangedFor(nameof(CreateOrderIsActive))]
     private ViewModelBase _currentPage;
 
     public bool OrdersSummaryIsActive => CurrentPage == _ordersSummaryPage;
     public bool LocalOrdersIsActive => CurrentPage == _localOrdersPage;
+    public bool CreateOrderIsActive => CurrentPage == _createOrderPage;
 
     private readonly OrdersSummaryViewModel _ordersSummaryPage = new OrdersSummaryViewModel();
     private readonly LocalOrdersViewModel _localOrdersPage = new LocalOrdersViewModel();
+    private readonly CreateOrderViewModel _createOrderPage = new CreateOrderViewModel();
 
     public MainViewModel()
     {
-        CurrentPage = _localOrdersPage;
+        CurrentPage = _ordersSummaryPage;
     }
 
     [RelayCommand]
@@ -54,10 +57,15 @@ public partial class MainViewModel : ViewModelBase
         CurrentPage = _ordersSummaryPage;
     }
 
-
     [RelayCommand]
     private void GoToLocalOrders()
     {
         CurrentPage = _localOrdersPage;
+    }
+
+    [RelayCommand]
+    private void GoToCreateOrder()
+    {
+        CurrentPage = _createOrderPage;
     }
 }

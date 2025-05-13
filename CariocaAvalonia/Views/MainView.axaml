@@ -19,7 +19,6 @@
 
     <ContentControl Grid.Column="1" Content="{Binding CurrentPage}"></ContentControl>
     
-    
     <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
       
       <Grid RowDefinitions="*, Auto">
@@ -33,6 +32,13 @@
             <StackPanel Orientation="Horizontal">
               <Label Classes="icon" Content="&#xE2F6;"></Label>
               <Label Content="Sumario de ordenes" IsVisible="{Binding SideMenuExpanded}"></Label>
+            </StackPanel>
+          </Button>
+
+          <Button HorizontalAlignment="Stretch" Classes.active="{Binding CreateOrderIsActive}" Command="{Binding GoToCreateOrderCommand}">
+            <StackPanel Orientation="Horizontal">
+              <Label Classes="icon" Content="&#xE3D6;"></Label>
+              <Label Content="Crear orden" IsVisible="{Binding SideMenuExpanded}"></Label>
             </StackPanel>
           </Button>
           
