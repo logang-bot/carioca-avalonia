@@ -10,11 +10,13 @@ namespace CariocaAvalonia.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
+    private const string buttonActiveClasses = "active";
+
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(SidebarWidth))]
+    //[NotifyPropertyChangedFor(nameof(SidebarWidth))]
     private bool _sideMenuExpanded = true;
 
-    public int SidebarWidth => SideMenuExpanded ? 250 : 80;
+    //public int SidebarWidth => SideMenuExpanded ? 250 : 80;
 
     //public SvgImage SideMenuImage => new SvgImage
     //{
@@ -24,9 +26,38 @@ public partial class MainViewModel : ViewModelBase
     //public Bitmap
     //    SideMenuImage => new(AssetLoader.Open(new Uri($"avares://{nameof(CariocaAvalonia)}/Assets/Images/{(SideMenuExpanded ? "img_dummy_logo.png" : "avalonia-logo.ico")}")));
 
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(OrdersSummaryIsActive))]
+    [NotifyPropertyChangedFor(nameof(LocalOrdersIsActive))]
+    private ViewModelBase _currentPage;
+
+    public bool OrdersSummaryIsActive => CurrentPage == _ordersSummaryPage;
+    public bool LocalOrdersIsActive => CurrentPage == _localOrdersPage;
+
+    private readonly OrdersSummaryViewModel _ordersSummaryPage = new OrdersSummaryViewModel();
+    private readonly LocalOrdersViewModel _localOrdersPage = new LocalOrdersViewModel();
+
+    public MainViewModel()
+    {
+        CurrentPage = _localOrdersPage;
+    }
+
     [RelayCommand]
     private void SideMenuResize()
     {
         SideMenuExpanded = !SideMenuExpanded;
+    }
+
+    [RelayCommand]
+    private void GoToOrdersSummary()
+    {
+        CurrentPage = _ordersSummaryPage;
+    }
+
+
+    [RelayCommand]
+    private void GoToLocalOrders()
+    {
+        CurrentPage = _localOrdersPage;
     }
 }
