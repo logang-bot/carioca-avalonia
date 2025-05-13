@@ -12,6 +12,7 @@ namespace CariocaAvalonia.ViewModels;
 
 public partial class CreateOrderViewModel : ViewModelBase
 {
+    private IProductParser _productParser;
     private ObservableCollection<ProductViewModel> _products;
     public ObservableCollection<ProductViewModel> Products
     {
@@ -42,12 +43,14 @@ public partial class CreateOrderViewModel : ViewModelBase
         Products = [.. DummyData.DummyProducts.Select(p => p.ToViewModel())];
         AddedProducts = new ObservableCollection<ProductViewModel>();
         TotalAmount = 0;
+        _productParser = new ProductParser();
     }
 
     public void AddProduct(ProductViewModel product)
     {
         AddedProducts.Add(product);
         TotalAmount += product.Cost;
+        TotalAmount = _productParser.roundAmount(TotalAmount, 2);
         OnPropertyChanged(nameof(IsAddedProductsEmpty));
     }
 }
